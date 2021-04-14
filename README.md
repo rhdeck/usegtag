@@ -54,7 +54,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.ts:13](https://github.com/rhdeck/usegtag/blob/f49e7ff/src/index.ts#L13)
+Defined in: [index.ts:13](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L13)
 
 ___
 
@@ -72,7 +72,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.ts:48](https://github.com/rhdeck/usegtag/blob/f49e7ff/src/index.ts#L48)
+Defined in: [index.ts:48](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L48)
 
 ___
 
@@ -94,4 +94,4 @@ Name | Type |
 
 New gtag function or undefined if still loading
 
-Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/f49e7ff/src/index.ts#L57)
+Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L57)
