@@ -12,7 +12,8 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "noEmitOnError": true
+    "noEmitOnError": true,
+    "types": ["gtag.js"]
   },
 
   "include": ["./src/"]
