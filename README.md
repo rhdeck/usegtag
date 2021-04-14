@@ -1,49 +1,97 @@
 
 <a name="readmemd"></a>
 
-Template for making easy-to-work-with tempates
+# usegtag
+Connect your react app to Google Analytics with a simple hook 
 
-# ts-template
-
-## Usage
-
-1. [Copy this template](https://github.com/rhdeck/ts-template/)
-2. Clone to a local directory (eg `git clone https://github.com/me/my-repository/ && cd my-repository`)
-3. Run `./setup.js` to initialize the node package (Get rid of template strings - and this readme!)
-4. Happy Coding!
-
-## Useful Scripts
-
-1. `yarn build` will build using typescript pre-configured to node-compatible defaults
-2. `yarn docs` will auto-generate a README.md that starts with TOP.md, then adds CLI documentation (via [commanderdoc](https://npmjs.com/package/commanderdoc)) for any tool you have set up, and then library documentation after that.
-3. `yarn test` is pre-configured to test for typescript errors
-
-## Git code protections
-
-1. `git commit` will be blocked on the `main` branch unless you set the environment variable `ALLOWMAIN=1` Branch commits and PRs are thus encouraged
-2. `git commit` also tests messages for meeting the commitline standard conventions.
-3. `git commit` blocks pushes that do not pass `yarn test` (as a base case, they must pass typescript compilation)
-4. `npm publish` will always rebuild the code, the documentation, and push those changes back to the repository.
-5. `npm publish` will only publish the lib and src directories - any others are no
-
-## A note on "main"
-
-I made a deliberate choice to change the primary branch from `master` to `main` for reasons that are obvious to some. This repository endeavors to make that just automatic.
-
-PRs and feedback welcome via GitHub issues.
-
-
-<a name="__climd"></a>
-
-# Usage
+## Strong Recommendation
+Add `@types/gtag.js` as a dependency to a project that implements `useGtag`. This will give you much better type completion
 ```bash
-npx template [options]
+npm i @types/gtag.js --development --save
+```
+or
+```bash
+yarn add -D @types/gtag.js
 ```
 
 <a name="_librarymd"></a>
 
-[template - v1.0.2](#readmemd)
+usegtag - v1.0.0
 
-# template - v1.0.2
+# usegtag - v1.0.0
 
+## Table of contents
 
+### References
+
+- [default](#default)
+
+### Functions
+
+- [install](#install)
+- [setTrackingId](#settrackingid)
+- [useGtag](#usegtag)
+
+## References
+
+### default
+
+Renames and exports: [useGtag](#usegtag)
+
+## Functions
+
+### install
+
+▸ **install**(`trackingId?`: *string*): *void*
+
+Install the GA tracking code (gtag.js) on your page
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`trackingId?` | *string* | Code for identifying the data stream/property in Google Analytics (G-XXXXXX or UA-XXXXXXX)   |
+
+**Returns:** *void*
+
+Defined in: [index.ts:13](https://github.com/rhdeck/usegtag/blob/a5fbc9a/src/index.ts#L13)
+
+___
+
+### setTrackingId
+
+▸ **setTrackingId**(`trackingId`: *string*): *void*
+
+Initialize the tracking code for later use by `install` or `useGtag`. Facilitates easy initializastion and lazy loading
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`trackingId` | *string* |
+
+**Returns:** *void*
+
+Defined in: [index.ts:48](https://github.com/rhdeck/usegtag/blob/a5fbc9a/src/index.ts#L48)
+
+___
+
+### useGtag
+
+▸ **useGtag**(`trackingId?`: *string*): *undefined* \| Gtag
+
+Fetch the gtag function, and  install it if not already set up.
+
+**`note`** For best results, combine with a `useEffect` to confirm the gtag function is in fact available for use
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`trackingId?` | *string* |
+
+**Returns:** *undefined* \| Gtag
+
+New gtag function or undefined if still loading
+
+Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/a5fbc9a/src/index.ts#L57)
