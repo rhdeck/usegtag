@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 let isReady = false;
 let isError = false;
 let isInstalling = false;
 let _code: string | undefined;
-const loadListeners: ((isLoaded: boolean) => void)[] = [];
+const loadListeners: ((gtag: Gtag.Gtag) => void)[] = [];
+//@ts-ignore
+window.dataLayer = window.dataLayer || [];
+//@ts-ignore
+globalThis.gtag = () => {
+  //@ts-ignore
+  globalThis.dataLayer.push(arguments);
+};
 /**
  * Install the GA tracking code (gtag.js) on your page
  * @param trackingId Code for identifying the data stream/property in Google Analytics (G-XXXXXX or UA-XXXXXXX)
@@ -24,15 +31,17 @@ export function install(trackingId?: string) {
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${trackingId}`;
   head.insertBefore(script, head.firstChild);
+
   script.onload = () => {
     isReady = true;
     isInstalling = false;
-    loadListeners.map((l) => l(true));
+    loadListeners.map((l) => l(gtag));
   };
   script.onerror = () => {
     isReady = false;
     isError = true;
     isInstalling = false;
+    while (loadListeners.length) loadListeners.shift();
   };
   try {
     gtag("js", new Date());
@@ -51,8 +60,7 @@ export function setTrackingId(trackingId: string) {
 /**
  * Fetch the gtag function, and  install it if not already set up.
  * @param code Tracking code for Google Analytics (G-XXXXX or UA-XXXXX)
- * @returns New gtag function or undefined if still loading
- * @note For best results, combine with a `useEffect` to confirm the gtag function is in fact available for use
+ * @returns New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
  */
 export function useGtag(trackingId?: string) {
   if (!isInstalling) {
@@ -61,13 +69,6 @@ export function useGtag(trackingId?: string) {
       if (_code) install(_code);
     }
   }
-  const [savedGtag, setGtag] = useState(() => gtag);
-  if (!isReady) {
-    if (isError) return;
-    loadListeners.push(() => {
-      setGtag(() => gtag);
-    });
-  }
-  return savedGtag;
+  return gtag;
 }
 export default useGtag;
