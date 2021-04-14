@@ -16,9 +16,9 @@ yarn add -D @types/gtag.js
 
 <a name="_librarymd"></a>
 
-usegtag - v1.0.0
+usegtag - v1.0.1
 
-# usegtag - v1.0.0
+# usegtag - v1.0.1
 
 ## Table of contents
 
@@ -54,7 +54,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.ts:13](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L13)
+Defined in: [index.ts:20](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L20)
 
 ___
 
@@ -72,17 +72,15 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.ts:48](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L48)
+Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L57)
 
 ___
 
 ### useGtag
 
-▸ **useGtag**(`trackingId?`: *string*): *undefined* \| Gtag
+▸ **useGtag**(`trackingId?`: *string*): Gtag
 
 Fetch the gtag function, and  install it if not already set up.
-
-**`note`** For best results, combine with a `useEffect` to confirm the gtag function is in fact available for use
 
 #### Parameters:
 
@@ -90,8 +88,8 @@ Name | Type |
 :------ | :------ |
 `trackingId?` | *string* |
 
-**Returns:** *undefined* \| Gtag
+**Returns:** Gtag
 
-New gtag function or undefined if still loading
+New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
 
-Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/fd2025a/src/index.ts#L57)
+Defined in: [index.ts:65](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L65)
