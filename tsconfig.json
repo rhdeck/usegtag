@@ -13,7 +13,8 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "noEmitOnError": true,
-    "types": ["gtag.js"]
+    "types": ["gtag.js"],
+    "jsx": "react"
   },
 
   "include": ["./src/"]

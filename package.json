@@ -10,7 +10,7 @@
     "pre-commit": "(git-branch-is --not main || (set -u && echo $ALLOWMAIN)) && yarn test",
     "test": "tsc --noEmit",
     "build": "tsc && yarn pack -f package.tgz",
-    "docs:lib": "typedoc --theme markdown --readme none --includeVersion --out docstemp src/index.ts && rm README.md ; mv docstemp/README.md docstemp/_library.md",
+    "docs:lib": "typedoc --theme markdown --readme none --includeVersion --out docstemp src/index.tsx && rm README.md ; mv docstemp/README.md docstemp/_library.md",
     "docs:compile": "mkdir docstemp ; cp TOP.md docstemp/README.md ; concat-md docstemp > README.md && rm -rf docstemp",
     "docs": "rm -rf docstemp && yarn docs:lib  && yarn docs:compile",
     "prepublishOnly": "yarn build && yarn docs && git commit README.md -m \"docs: updating docs\" && git push",
