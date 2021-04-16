@@ -1,7 +1,7 @@
 {
   "name": "usegtag",
   "private": false,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "",
   "main": "lib/index.js",
   "bin": "lib/bin.js",
