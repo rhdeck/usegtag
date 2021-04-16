@@ -1,49 +1,168 @@
 
 <a name="readmemd"></a>
 
-Template for making easy-to-work-with tempates
-
-# ts-template
-
-## Usage
-
-1. [Copy this template](https://github.com/rhdeck/ts-template/)
-2. Clone to a local directory (eg `git clone https://github.com/me/my-repository/ && cd my-repository`)
-3. Run `./setup.js` to initialize the node package (Get rid of template strings - and this readme!)
-4. Happy Coding!
-
-## Useful Scripts
-
-1. `yarn build` will build using typescript pre-configured to node-compatible defaults
-2. `yarn docs` will auto-generate a README.md that starts with TOP.md, then adds CLI documentation (via [commanderdoc](https://npmjs.com/package/commanderdoc)) for any tool you have set up, and then library documentation after that.
-3. `yarn test` is pre-configured to test for typescript errors
-
-## Git code protections
-
-1. `git commit` will be blocked on the `main` branch unless you set the environment variable `ALLOWMAIN=1` Branch commits and PRs are thus encouraged
-2. `git commit` also tests messages for meeting the commitline standard conventions.
-3. `git commit` blocks pushes that do not pass `yarn test` (as a base case, they must pass typescript compilation)
-4. `npm publish` will always rebuild the code, the documentation, and push those changes back to the repository.
-5. `npm publish` will only publish the lib and src directories - any others are no
-
-## A note on "main"
-
-I made a deliberate choice to change the primary branch from `master` to `main` for reasons that are obvious to some. This repository endeavors to make that just automatic.
-
-PRs and feedback welcome via GitHub issues.
-
-
-<a name="__climd"></a>
-
-# Usage
-```bash
-npx template [options]
-```
+# useGtag
+Connect your React app to Google Analytics 4 and/or Universal Analytics with a simple hook 
 
 <a name="_librarymd"></a>
 
-[template - v1.0.2](#readmemd)
+usegtag - v1.2.0
 
-# template - v1.0.2
+# usegtag - v1.2.0
 
+## Table of contents
 
+### References
+
+- [default](#default)
+
+### Variables
+
+- [Gtag](#gtag)
+
+### Functions
+
+- [install](#install)
+- [setTrackingId](#settrackingid)
+- [useGtag](#usegtag)
+- [useGtagBuiltInEvent](#usegtagbuiltinevent)
+- [useGtagCustomEvent](#usegtagcustomevent)
+- [usePageview](#usepageview)
+
+## References
+
+### default
+
+Renames and exports: [useGtag](#usegtag)
+
+## Variables
+
+### Gtag
+
+• `Const` **Gtag**: *FC*<{ `trackingId`: *string*  }\>
+
+React component for setting the tracking ID and triggering the GA (gtag.js) initialization. Can be anywhere in the tree
+
+**`param`** 
+
+**`returns`** 
+
+Defined in: [index.tsx:23](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L23)
+
+## Functions
+
+### install
+
+▸ **install**(`trackingId?`: *string*, `params?`: Gtag.CustomParams): *void*
+
+Install the GA tracking code (gtag.js) on your page. (Imperative alternative to using the `GA4` component)
+
+#### Parameters:
+
+Name | Type | Description |
+:------ | :------ | :------ |
+`trackingId?` | *string* | Code for identifying the data stream/property in Google Analytics (G-XXXXXX or UA-XXXXXXX)   |
+`params` | Gtag.CustomParams | - |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:35](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L35)
+
+___
+
+### setTrackingId
+
+▸ **setTrackingId**(`trackingId`: *string*): *void*
+
+Initialize the tracking code for later use by `install` or `useGtag`. Facilitates easy initializastion and lazy loading
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`trackingId` | *string* |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:83](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L83)
+
+___
+
+### useGtag
+
+▸ **useGtag**(`trackingId?`: *string*): *object*
+
+Fetch the gtag function, and  install it if not already set up.
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`trackingId?` | *string* |
+
+**Returns:** *object*
+
+Name | Type |
+:------ | :------ |
+`builtInEvent` | (`action`: Gtag.EventNames, `params?`: Gtag.EventParams) => *void* |
+`customEvent` | (`action`: *string*, `params?`: { [key: string]: *string* \| *number* \| *boolean*;  }) => *void* |
+`gtag` | Gtag |
+`pageview` | (`path?`: *string* \| Location, `location?`: *string* \| Location, `title?`: *string*) => *any* |
+
+New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
+
+Defined in: [index.tsx:91](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L91)
+
+___
+
+### useGtagBuiltInEvent
+
+▸ **useGtagBuiltInEvent**(`action`: Gtag.EventNames, `params`: Gtag.EventParams, `deps?`: *any*[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`action` | Gtag.EventNames |
+`params` | Gtag.EventParams |
+`deps?` | *any*[] |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:148](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L148)
+
+___
+
+### useGtagCustomEvent
+
+▸ **useGtagCustomEvent**(`action`: *string*, `params`: { [key: string]: *string* \| *boolean* \| *number*;  }, `deps?`: *any*[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`action` | *string* |
+`params` | *object* |
+`deps?` | *any*[] |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:158](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L158)
+
+___
+
+### usePageview
+
+▸ **usePageview**(`pathname?`: *string*, `deps?`: *any*[], `trackingId?`: *string*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`pathname?` | *string* |
+`deps?` | *any*[] |
+`trackingId?` | *string* |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:168](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L168)
