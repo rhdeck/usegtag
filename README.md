@@ -26,11 +26,16 @@ usegtag - v1.0.1
 
 - [default](#default)
 
+### Variables
+
+- [GA4](#ga4)
+
 ### Functions
 
 - [install](#install)
 - [setTrackingId](#settrackingid)
 - [useGtag](#usegtag)
+- [usePageview](#usepageview)
 
 ## References
 
@@ -38,23 +43,38 @@ usegtag - v1.0.1
 
 Renames and exports: [useGtag](#usegtag)
 
+## Variables
+
+### GA4
+
+• `Const` **GA4**: *FC*<{ `trackingId`: *string*  }\>
+
+React component for setting the tracking ID. Can be anywhere in the tree
+
+**`param`** 
+
+**`returns`** 
+
+Defined in: index.tsx:13
+
 ## Functions
 
 ### install
 
-▸ **install**(`trackingId?`: *string*): *void*
+▸ **install**(`trackingId?`: *string*, `params?`: Gtag.CustomParams): *void*
 
-Install the GA tracking code (gtag.js) on your page
+Install the GA tracking code (gtag.js) on your page. (Imperative alternative to using the `GA4` component)
 
 #### Parameters:
 
 Name | Type | Description |
 :------ | :------ | :------ |
 `trackingId?` | *string* | Code for identifying the data stream/property in Google Analytics (G-XXXXXX or UA-XXXXXXX)   |
+`params` | Gtag.CustomParams | - |
 
 **Returns:** *void*
 
-Defined in: [index.ts:20](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L20)
+Defined in: index.tsx:26
 
 ___
 
@@ -72,13 +92,13 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.ts:57](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L57)
+Defined in: index.tsx:75
 
 ___
 
 ### useGtag
 
-▸ **useGtag**(`trackingId?`: *string*): Gtag
+▸ **useGtag**(`trackingId?`: *string*): *object*
 
 Fetch the gtag function, and  install it if not already set up.
 
@@ -88,8 +108,32 @@ Name | Type |
 :------ | :------ |
 `trackingId?` | *string* |
 
-**Returns:** Gtag
+**Returns:** *object*
+
+Name | Type |
+:------ | :------ |
+`builtInEvent` | (`action`: Gtag.EventNames, `params?`: Gtag.EventParams) => *void* |
+`customEvent` | (`action`: *string*, `params?`: Gtag.EventParams) => *void* |
+`gtag` | Gtag |
+`pageview` | (`path?`: *string* \| Location, `location?`: *string* \| Location, `title?`: *string*) => *any* |
 
 New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
 
-Defined in: [index.ts:65](https://github.com/rhdeck/usegtag/blob/7f4ca69/src/index.ts#L65)
+Defined in: index.tsx:83
+
+___
+
+### usePageview
+
+▸ **usePageview**(`pathname?`: *string*, `trackingId?`: *string*): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`pathname?` | *string* |
+`trackingId?` | *string* |
+
+**Returns:** *void*
+
+Defined in: index.tsx:130
