@@ -2,23 +2,13 @@
 <a name="readmemd"></a>
 
 # useGtag
-Connect your React app to Google Analytics with a simple hook 
-
-## Strong Recommendation
-Add `@types/gtag.js` as a dependency to a project that implements `useGtag`. This will give you much better type completion
-```bash
-npm i @types/gtag.js --development --save
-```
-or
-```bash
-yarn add -D @types/gtag.js
-```
+Connect your React app to Google Analytics 4 and/or Universal Analytics with a simple hook 
 
 <a name="_librarymd"></a>
 
-usegtag - v1.1.1
+usegtag - v1.2.0
 
-# usegtag - v1.1.1
+# usegtag - v1.2.0
 
 ## Table of contents
 
@@ -57,7 +47,7 @@ React component for setting the tracking ID and triggering the GA (gtag.js) init
 
 **`returns`** 
 
-Defined in: [index.tsx:23](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L23)
+Defined in: [index.tsx:23](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L23)
 
 ## Functions
 
@@ -76,7 +66,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:35](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L35)
+Defined in: [index.tsx:35](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L35)
 
 ___
 
@@ -94,7 +84,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:83](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L83)
+Defined in: [index.tsx:83](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L83)
 
 ___
 
@@ -121,7 +111,7 @@ Name | Type |
 
 New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
 
-Defined in: [index.tsx:91](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L91)
+Defined in: [index.tsx:91](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L91)
 
 ___
 
@@ -139,7 +129,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:148](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L148)
+Defined in: [index.tsx:148](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L148)
 
 ___
 
@@ -157,21 +147,22 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:158](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L158)
+Defined in: [index.tsx:158](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L158)
 
 ___
 
 ### usePageview
 
-▸ **usePageview**(`pathname?`: *string*, `trackingId?`: *string*): *void*
+▸ **usePageview**(`pathname?`: *string*, `deps?`: *any*[], `trackingId?`: *string*): *void*
 
 #### Parameters:
 
 Name | Type |
 :------ | :------ |
 `pathname?` | *string* |
+`deps?` | *any*[] |
 `trackingId?` | *string* |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:168](https://github.com/rhdeck/usegtag/blob/153d628/src/index.tsx#L168)
+Defined in: [index.tsx:168](https://github.com/rhdeck/usegtag/blob/3e9acaf/src/index.tsx#L168)
