@@ -153,7 +153,7 @@ export function useGtagBuiltInEvent(
   const { builtInEvent } = useGtag();
   useEffect(() => {
     builtInEvent(action, params);
-  }, deps);
+  }, [builtInEvent, ...(deps ? deps : [])]);
 }
 export function useGtagCustomEvent(
   action: string,
@@ -163,13 +163,17 @@ export function useGtagCustomEvent(
   const { customEvent } = useGtag();
   useEffect(() => {
     customEvent(action, params);
-  }, deps);
+  }, [customEvent, ...(deps ? deps : [])]);
 }
-export function usePageview(pathname?: string, trackingId?: string) {
+export function usePageview(
+  pathname?: string,
+  deps?: any[],
+  trackingId?: string
+) {
   const { pageview } = useGtag(trackingId);
   useEffect(() => {
     if (!pathname) pathname = window.location.pathname;
     pageview(pathname);
-  }, [pageview, pathname]);
+  }, [pageview, pathname, ...(deps ? deps : [])]);
 }
 export default useGtag;
