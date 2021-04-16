@@ -20,7 +20,7 @@ const loadListeners: ((gtag: Gtag.Gtag) => void)[] = [
  * @param param0
  * @returns
  */
-export const GA4: FC<{ trackingId: string }> = ({ children, trackingId }) => {
+export const Gtag: FC<{ trackingId: string }> = ({ children, trackingId }) => {
   useEffect(() => {
     install(trackingId);
   }, [trackingId]);
