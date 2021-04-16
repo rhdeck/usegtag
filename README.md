@@ -16,9 +16,9 @@ yarn add -D @types/gtag.js
 
 <a name="_librarymd"></a>
 
-usegtag - v1.0.1
+usegtag - v1.1.0
 
-# usegtag - v1.0.1
+# usegtag - v1.1.0
 
 ## Table of contents
 
@@ -35,6 +35,8 @@ usegtag - v1.0.1
 - [install](#install)
 - [setTrackingId](#settrackingid)
 - [useGtag](#usegtag)
+- [useGtagBuiltInEvent](#usegtagbuiltinevent)
+- [useGtagCustomEvent](#usegtagcustomevent)
 - [usePageview](#usepageview)
 
 ## References
@@ -49,13 +51,13 @@ Renames and exports: [useGtag](#usegtag)
 
 • `Const` **GA4**: *FC*<{ `trackingId`: *string*  }\>
 
-React component for setting the tracking ID. Can be anywhere in the tree
+React component for setting the tracking ID and triggering the GA (gtag.js) initialization. Can be anywhere in the tree
 
 **`param`** 
 
 **`returns`** 
 
-Defined in: index.tsx:13
+Defined in: [index.tsx:23](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L23)
 
 ## Functions
 
@@ -74,7 +76,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: index.tsx:26
+Defined in: [index.tsx:35](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L35)
 
 ___
 
@@ -92,7 +94,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: index.tsx:75
+Defined in: [index.tsx:83](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L83)
 
 ___
 
@@ -113,13 +115,49 @@ Name | Type |
 Name | Type |
 :------ | :------ |
 `builtInEvent` | (`action`: Gtag.EventNames, `params?`: Gtag.EventParams) => *void* |
-`customEvent` | (`action`: *string*, `params?`: Gtag.EventParams) => *void* |
+`customEvent` | (`action`: *string*, `params?`: { [key: string]: *string* \| *number* \| *boolean*;  }) => *void* |
 `gtag` | Gtag |
 `pageview` | (`path?`: *string* \| Location, `location?`: *string* \| Location, `title?`: *string*) => *any* |
 
 New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
 
-Defined in: index.tsx:83
+Defined in: [index.tsx:91](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L91)
+
+___
+
+### useGtagBuiltInEvent
+
+▸ **useGtagBuiltInEvent**(`action`: Gtag.EventNames, `params`: Gtag.EventParams, `deps?`: *any*[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`action` | Gtag.EventNames |
+`params` | Gtag.EventParams |
+`deps?` | *any*[] |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:148](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L148)
+
+___
+
+### useGtagCustomEvent
+
+▸ **useGtagCustomEvent**(`action`: *string*, `params`: { [key: string]: *string* \| *boolean* \| *number*;  }, `deps?`: *any*[]): *void*
+
+#### Parameters:
+
+Name | Type |
+:------ | :------ |
+`action` | *string* |
+`params` | *object* |
+`deps?` | *any*[] |
+
+**Returns:** *void*
+
+Defined in: [index.tsx:158](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L158)
 
 ___
 
@@ -136,4 +174,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: index.tsx:130
+Defined in: [index.tsx:168](https://github.com/rhdeck/usegtag/blob/5bdce5d/src/index.tsx#L168)
