@@ -1,10 +1,4 @@
-import React, {
-  FC,
-  Fragment,
-  useEffect,
-  useState,
-  FunctionComponent,
-} from "react";
+import React, { Fragment, useEffect, useState, ReactNode } from "react";
 let isReady = false;
 let isError = false;
 let isInstalling = false;
@@ -17,15 +11,31 @@ const loadListeners: ((gtag: Gtag.Gtag) => void)[] = [
 ];
 /**
  * React component for setting the tracking ID and triggering the GA (gtag.js) initialization. Can be anywhere in the tree
- * @param param0
- * @returns
+ * @returns React `<Gtag />` component
  */
-export const Gtag: FC<{ trackingId: string }> = ({ children, trackingId }) => {
+export function Gtag({
+  children,
+  trackingId,
+  transportUrl,  
+  sendPageView = true,
+}: {
+  /** Google Analytics ID: G-XXXXXX or UA-XXXXXX */
+  trackingId: string;
+  /** Whether to send initial page view on load (default: true) */
+  sendPageView?: boolean;
+  /** URL to send events to, if you are running a custom server setup. (Defaults to the googla analytics server) */
+  transportUrl?: string;
+  /** Children of the component (if any). Note that this component works where-ever you put it in the node tree */
+  children?: ReactNode;
+}) {
   useEffect(() => {
-    install(trackingId);
+    install(trackingId, {
+      send_page_view: sendPageView,
+      transport_url: transportUrl,
+    });
   }, [trackingId]);
   return <Fragment>{children}</Fragment>;
-};
+}
 /**
  * Install the GA tracking code (gtag.js) on your page. (Imperative alternative to using the `GA4` component)
  * @param trackingId Code for identifying the data stream/property in Google Analytics (G-XXXXXX or UA-XXXXXXX)
@@ -34,7 +44,11 @@ export const Gtag: FC<{ trackingId: string }> = ({ children, trackingId }) => {
  */
 export function install(
   trackingId?: string,
-  params: Gtag.CustomParams = { send_page_view: true }
+  params: {
+    /** Whether to send initial page view on load (default: true) */
+    send_page_view?: boolean;
+    transport_url?: string;
+  } & Gtag.CustomParams = { send_page_view: true }
 ) {
   if (!trackingId) trackingId = _code;
   if (!trackingId) throw new Error("Tracking ID is required to intall GTag");

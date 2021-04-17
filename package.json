@@ -1,7 +1,7 @@
 {
   "name": "usegtag",
   "private": false,
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "",
   "main": "lib/index.js",
   "bin": "lib/bin.js",
@@ -38,8 +38,8 @@
     "git-branch-is": "^4.0.0",
     "husky": "^4.3.6",
     "install-peers-cli": "^2.2.0",
-    "typedoc": "^0.20.28",
-    "typedoc-plugin-markdown": "^3.5.0",
+    "typedoc": "^0.20.35",
+    "typedoc-plugin-markdown": "^3.6.1",
     "typescript": "^4.2.2",
     "validate-npm-package-name": "^3.0.0"
   },
