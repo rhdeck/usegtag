@@ -6,9 +6,9 @@ Connect your React app to Google Analytics 4 and/or Universal Analytics with a s
 
 <a name="_librarymd"></a>
 
-usegtag - v1.2.0
+usegtag - v1.2.1
 
-# usegtag - v1.2.0
+# usegtag - v1.2.1
 
 ## Table of contents
 
@@ -54,7 +54,7 @@ Name | Type | Description |
 
 React `<Gtag />` component
 
-Defined in: [index.tsx:16](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L16)
+Defined in: [index.tsx:16](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L16)
 
 ___
 
@@ -73,7 +73,7 @@ Name | Type | Description |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:45](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L45)
+Defined in: [index.tsx:45](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L45)
 
 ___
 
@@ -91,7 +91,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:97](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L97)
+Defined in: [index.tsx:97](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L97)
 
 ___
 
@@ -118,7 +118,7 @@ Name | Type |
 
 New gtag function, runs when gtag is loaded if not ready, will die silently if in error situation
 
-Defined in: [index.tsx:105](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L105)
+Defined in: [index.tsx:105](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L105)
 
 ___
 
@@ -136,7 +136,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:162](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L162)
+Defined in: [index.tsx:162](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L162)
 
 ___
 
@@ -154,7 +154,7 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:172](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L172)
+Defined in: [index.tsx:172](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L172)
 
 ___
 
@@ -172,4 +172,4 @@ Name | Type |
 
 **Returns:** *void*
 
-Defined in: [index.tsx:182](https://github.com/rhdeck/usegtag/blob/5801dd0/src/index.tsx#L182)
+Defined in: [index.tsx:182](https://github.com/rhdeck/usegtag/blob/052ec22/src/index.tsx#L182)
