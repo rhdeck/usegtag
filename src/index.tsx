@@ -16,7 +16,7 @@ const loadListeners: ((gtag: Gtag.Gtag) => void)[] = [
 export function Gtag({
   children,
   trackingId,
-  transportUrl,  
+  transportUrl,
   sendPageView = true,
 }: {
   /** Google Analytics ID: G-XXXXXX or UA-XXXXXX */
@@ -136,7 +136,11 @@ export function useGtag(trackingId?: string) {
     action: string,
     params?: { [key: string]: string | number | boolean }
   ) {
-    gtagContainer.gtag("event", action, params);
+    const w: { dataLayer: any[] | undefined } = (window as unknown) as {
+      dataLayer: any[] | undefined;
+    };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push("event", action, params);
   }
   /**
    * @desc set event and send to gtag
@@ -146,7 +150,11 @@ export function useGtag(trackingId?: string) {
    * @param nonInteraction
    */
   function builtInEvent(action: Gtag.EventNames, params?: Gtag.EventParams) {
-    gtagContainer.gtag("event", action, params);
+    const w: { dataLayer: any[] | undefined } = (window as unknown) as {
+      dataLayer: any[] | undefined;
+    };
+    w.dataLayer = w.dataLayer || [];
+    w.dataLayer.push("event", action, params);
   }
   const [container, setGtag] = useState({
     customEvent,
